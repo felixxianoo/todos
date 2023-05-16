@@ -1,9 +1,12 @@
 import "./App.css";
-import { useState } from "react";
+import { Component, useState } from "react";
+import { FaCheck, FaPencilAlt, FaTrash, FaRegSave } from "react-icons/fa";
 
 function App() {
   const [newItem, setNewItem] = useState("");
   const [items, setItems] = useState([]);
+  const [editItem, setEditItem] = useState("");
+  const [editItemId, setEditItemId] = useState(null);
 
   const addItem = () => {
     if (!newItem) {
@@ -15,12 +18,23 @@ function App() {
       bool: false,
       id: Math.floor(Math.random() * 1000),
       value: newItem,
-      date: new Date(),
     };
-    console.log(item);
 
     setItems((oldList) => [...oldList, item]);
     setNewItem("");
+  };
+
+  const saveItem = () => {
+    if (!editItem) {
+      alert("Empty task field not allowed");
+      return;
+    };
+    setItems((prevTask) =>
+      prevTask.map((item) =>
+        item.id === editItemId ? { ...item, value: editItem } : item )
+    );
+    setEditItem("");
+    setEditItemId(null);
   };
 
   const returnClick = (e) => {
@@ -29,16 +43,23 @@ function App() {
     };
   };
 
+  const editItemFunction = (id, value) => {
+    setEditItem(value);
+    setEditItemId(id);
+  };
+
   const deleteItem = (id) => {
-    const newArray = items.filter((item) => item.id !== id);
+    const newArray = items.filter((item) => item.id 
+    !== id)
     setItems(newArray);
   };
 
   const completedItem = (id) => {
     setItems((previousItemList) => {
       const newList = [...previousItemList];
-      const chosen = newList.find((item) => item.id == id);
-      chosen.bool = true;
+      const chosen = newList.find((item) => item.id 
+      == id)
+      chosen.bool = true
       return newList;
     });
   };
@@ -67,26 +88,43 @@ function App() {
             {items.map((item) => {
               return (
                 <li key={item.id}>
-                  <div
-                    className={
-                      item.bool ? "completed" : ""
-                    }
-                  >
-                    <h4>{item.value}</h4>
-                  </div>
-                  <div className="checkoff">
-                    <button
-                      className="normal"
-                      onClick={() => completedItem(item.id)}
-                    >
-                      &#10003;
-                    </button>
-                    <button
-                      className="delete"
-                      onClick={() => deleteItem(item.id)}
-                    >
-                      X{" "}
-                    </button>
+                  <div className={item.bool ? "completed" : "non-complete"}>
+                    {item.id === editItemId ? (
+                      <input
+                        className="editInput"
+                        type="text"
+                        value={editItem}
+                        onChange={(e) => setEditItem(e.target.value)}
+                      />
+                    ) : (
+                      <h4>{item.value}</h4>
+                    )}
+                    <div className="checkoffs">
+                      <button
+                        className="checkmark"
+                        onClick={() => completedItem(item.id)}
+                      >
+                        <FaCheck />
+                      </button>
+                      <button
+                        className="delete"
+                        onClick={() => deleteItem(item.id)}
+                      >
+                        <FaTrash />
+                      </button>
+                      {item.id === editItemId ? (
+                        <button className="save" onClick={saveItem}>
+                          <FaRegSave />
+                        </button>
+                      ) : (
+                        <button
+                          className="edit"
+                          onClick={() => editItemFunction(item.id, item.name)}
+                        >
+                          <FaPencilAlt />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </li>
               );

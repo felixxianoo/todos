@@ -1,4 +1,4 @@
-.App{
+.App {
   height: 100%;
   width: 100%;
   display: flex;
@@ -7,11 +7,11 @@
   justify-content: center;
   margin-top: 5rem;
 }
-.wrapper{
+.wrapper {
   height: 75%;
   width: 75%;
 }
-.container{
+.container {
   background-color: rgb(255, 255, 255);
   box-shadow: 2px 2px 2px 2px rgb(153, 153, 156);
   height: 15rem;
@@ -21,12 +21,12 @@
   align-items: center;
   padding: 0px 10px 0px 10px;
 }
-.add-section{
+.add-section {
   width: 100%;
   display: flex;
   justify-content: center;
 }
-.input{
+.input {
   width: 23rem;
   height: 2rem;
   border: none;
@@ -35,7 +35,7 @@
   padding-left: 1rem;
   outline: none;
 }
-.submit{
+.submit {
   height: 2.1rem;
   width: 8rem;
   border-radius: 0px 20px 20px 0px;
@@ -44,12 +44,12 @@
   color: white;
   font-size: medium;
 }
-.submit:hover{
+.submit:hover {
   border: 2px solid rgb(6, 105, 225);
   color: black;
-  background-color: lawngreen;
+  background-color: rgb(149, 188, 243);
 }
-.task-list{
+.task-list {
   height: 75%;
 }
 .list-item {
@@ -59,58 +59,100 @@
   flex-direction: column;
   gap: 1rem;
 }
-.task-list li{
+.task-list li {
   background-color: white;
   box-shadow: 2px 2px 2px 2px rgb(153, 153, 156);
-  width: 100%;
-  list-style: none;
   height: 4rem;
-  display: flex;
+  list-style: none;
+  display: grid;
   align-items: center;
-  justify-content: space-between;
 }
-li h4{
-  width: 45%;
+.non-complete {
   display: flex;
-  padding: .5rem;
+  justify-content: space-around;
+  align-items: center;
 }
-.checkoff{
-  width: 25%;
+.editInput {
+  width: 55%;
+}
+li h4 {
+  width: 55%;
+  text-align: center;
+}
+.checkoffs {
+  width: 35%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   padding: 7px;
-}
-.normal{
-  font-size: x-large;
-  border-radius: 1rem;
-  border:none;
-  background-color: green;
-  color: white;
-  border: 1px solid green;
-}
-.normal:hover{
-  background-color: greenyellow;
-  border: 1px solid green;
-  color: black;
 }
 .completed {
   display: flex;
+  justify-content: space-around;
   align-items: center;
+}
+.completed h4 {
   color: brown;
   text-decoration: line-through;
 }
-
-.delete{
-  font-size: x-large;
-  border-radius: 1rem;
-  border: 1px solid red;
-  background-color: red;
+.checkmark{
   color: white;
+  background-color: green;
+  border-radius: 5px;
+  font-size: larger;
+  border: 1px solid green;
+  padding-top: 5px;
+}
+.checkmark:hover{
+  color: green;
+  background-color: greenyellow;
+  border-radius: 5px;
+  font-size: larger;
+  border: 1px solid green;
+}
+.delete{
+  color: white;
+  background-color: red;
+  border-radius: 5px;
+  font-size: larger;
+  border: 1px solid red;
+  padding-top: 5px;
 }
 .delete:hover{
-  background-color: rgb(237, 101, 91);
+  color: red;
+  background-color: rgb(255, 155, 155);
+  border-radius: 5px;
+  font-size: larger;
   border: 1px solid red;
-  color: black;
+}
+.edit{
+  color: white;
+  background-color: gray;
+  border-radius: 5px;
+  font-size: larger;
+  border: 1px solid gray;
+  padding-top: 5px;
+}
+.edit:hover{
+  color: gray;
+  background-color: rgb(198, 196, 196);
+  border-radius: 5px;
+  font-size: larger;
+  border: 1px solid gray;
+}
+.save{
+  color: white;
+  background-color: gold;
+  border-radius: 5px;
+  font-size: larger;
+  border: 1px solid gold;
+  padding-top: 5px;
+}
+.save:hover{
+  color: gold;
+  background-color: goldenrod;
+  border-radius: 5px;
+  font-size: larger;
+  border: 1px solid gold;
 }
